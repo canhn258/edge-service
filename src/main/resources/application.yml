@@ -50,3 +50,15 @@ spring:
               maxBackoff: 500ms
               factor: 2.0
               basedOnPreviousValue: false
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        slidingWindowSize: 20
+        permittedNumberOfCallsInHalfOpenState: 5
+        waitDurationInOpenState: 15000
+        failureRateThreshold: 50
+  timelimiter:
+    configs:
+      default:
+        timeoutDuration: 5s
