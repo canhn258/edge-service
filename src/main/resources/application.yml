@@ -13,7 +13,7 @@ spring:
   cloud:
     gateway:
       httpclient:
-        connect-timeout: 2000
+        connect-timeout: 2000 # 2s
         response-timeout: 5s
         pool:
           type: elastic
@@ -41,14 +41,13 @@ spring:
         - name: Retry
           args:
             retries: 3
-            statuses: BAD_GATEWAY
             methods: GET
             series: SERVER_ERROR
             exceptions: java.io.IOException, java.util.concurrent.TimeoutException
             backoff:
               firstBackoff: 50ms
-              maxBackoff: 500ms
-              factor: 2.0
+              maxBackOff: 500ms
+              factor: 2
               basedOnPreviousValue: false
 resilience4j:
   circuitbreaker:
