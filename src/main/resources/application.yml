@@ -38,6 +38,7 @@ spring:
               args:
                 name: orderCircuitBreaker
       default-filters:
+        - SaveSession
         - name: RequestRateLimiter
           args:
             redis-rate-limiter:
